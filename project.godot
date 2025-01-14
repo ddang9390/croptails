@@ -28,6 +28,15 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="Croptails"
 
+[file_customization]
+
+folder_colors={
+"res://Tilesets/": "yellow",
+"res://assets/": "orange",
+"res://scenes/": "green",
+"res://scripts/": "pink"
+}
+
 [input]
 
 walk-up={
