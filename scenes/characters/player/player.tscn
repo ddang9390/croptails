@@ -1,11 +1,12 @@
-[gd_scene load_steps=49 format=3 uid="uid://d1ctc3d0k6dv7"]
+[gd_scene load_steps=50 format=3 uid="uid://d1ctc3d0k6dv7"]
 
-[ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_c2522"]
+[ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_c2522"]
 [ext_resource type="Texture2D" uid="uid://df212nhvv3wv8" path="res://assets/game/Characters/basic_character_spritesheet.png" id="1_nxsp6"]
 [ext_resource type="Texture2D" uid="uid://bkvv5tg43bltw" path="res://assets/game/Characters/basic_character_actions.png" id="2_s7v6w"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="3_kl1vi"]
 [ext_resource type="Script" path="res://scripts/state_machine/idle_state.gd" id="4_266fw"]
 [ext_resource type="Script" path="res://scripts/state_machine/walk_state.gd" id="5_x3m35"]
+[ext_resource type="Script" path="res://scripts/state_machine/chopping_state.gd" id="7_k8mad"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nboxf"]
 atlas = ExtResource("2_s7v6w")
@@ -176,7 +177,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xwvut")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_back",
 "speed": 3.0
 }, {
@@ -187,7 +188,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3tenq")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_front",
 "speed": 3.0
 }, {
@@ -198,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8juve")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_left",
 "speed": 3.0
 }, {
@@ -209,7 +210,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v15l0")
 }],
-"loop": true,
+"loop": false,
 "name": &"chopping_right",
 "speed": 3.0
 }, {
@@ -264,7 +265,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dee40")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_back",
 "speed": 3.0
 }, {
@@ -275,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cugky")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_front",
 "speed": 3.0
 }, {
@@ -286,7 +287,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3jjad")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_left",
 "speed": 3.0
 }, {
@@ -297,7 +298,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qqkiy")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_right",
 "speed": 3.0
 }, {
@@ -352,7 +353,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ng5rd")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_back",
 "speed": 3.0
 }, {
@@ -363,7 +364,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_loxvw")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_front",
 "speed": 3.0
 }, {
@@ -374,7 +375,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1uwda")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_left",
 "speed": 3.0
 }, {
@@ -385,7 +386,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ajmir")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_right",
 "speed": 3.0
 }]
@@ -399,7 +400,7 @@ script = ExtResource("1_c2522")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_q3l5v")
-animation = &"idle_front"
+animation = &"watering_right"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -419,3 +420,12 @@ animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 script = ExtResource("5_x3m35")
 player = NodePath("../..")
 animated_sprite_2D = NodePath("../../AnimatedSprite2D")
+
+[node name="Chopping" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
+script = ExtResource("7_k8mad")
+player = NodePath("../..")
+animated_sprite_2D = NodePath("../../AnimatedSprite2D")
+
+[node name="Tilling" type="Node" parent="StateMachine"]
+
+[node name="Watering" type="Node" parent="StateMachine"]
