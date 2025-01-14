@@ -28,5 +28,5 @@ tile_map_data = PackedByteArray("AAAZAAoABAAAAAAAAQA=")
 tile_set = ExtResource("1_jlxy1")
 
 [node name="Player" parent="." instance=ExtResource("2_8js05")]
-position = Vector2(192, 138)
+position = Vector2(381, 274)
 current_tool = 3
