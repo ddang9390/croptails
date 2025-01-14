@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://d1ctc3d0k6dv7"]
+[gd_scene load_steps=52 format=3 uid="uid://d1ctc3d0k6dv7"]
 
 [ext_resource type="Script" path="res://scripts/characters/player.gd" id="1_c2522"]
 [ext_resource type="Texture2D" uid="uid://df212nhvv3wv8" path="res://assets/game/Characters/basic_character_spritesheet.png" id="1_nxsp6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/state_machine/idle_state.gd" id="4_266fw"]
 [ext_resource type="Script" path="res://scripts/state_machine/walk_state.gd" id="5_x3m35"]
 [ext_resource type="Script" path="res://scripts/state_machine/chopping_state.gd" id="7_k8mad"]
+[ext_resource type="Script" path="res://scripts/state_machine/tilling_state.gd" id="8_1oof6"]
+[ext_resource type="Script" path="res://scripts/state_machine/watering_state.gd" id="9_7xlq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nboxf"]
 atlas = ExtResource("2_s7v6w")
@@ -426,6 +428,12 @@ script = ExtResource("7_k8mad")
 player = NodePath("../..")
 animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 
-[node name="Tilling" type="Node" parent="StateMachine"]
+[node name="Tilling" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
+script = ExtResource("8_1oof6")
+player = NodePath("../..")
+animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 
-[node name="Watering" type="Node" parent="StateMachine"]
+[node name="Watering" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
+script = ExtResource("9_7xlq2")
+player = NodePath("../..")
+animated_sprite_2D = NodePath("../../AnimatedSprite2D")
