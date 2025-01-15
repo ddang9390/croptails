@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 func on_hurt(hit_damage : int) -> void:
 	damage_component.apply_damage(hit_damage)
-	print(hit_damage)
 	
 func on_max_damage_reached() -> void:
 	print("dead")
+	queue_free()
