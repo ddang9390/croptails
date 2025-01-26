@@ -473,6 +473,10 @@ texture = ExtResource("4_0t2nh")
 8:2/0 = 0
 0:3/0 = 0
 1:3/0 = 0
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/y_sort_origin = 8
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 7, 3.5, 7, 3.5, 14, -3.5, 14)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ldbdt"]
 scenes/1/scene = ExtResource("5_55ge1")
@@ -480,6 +484,7 @@ scenes/2/scene = ExtResource("6_xn81l")
 scenes/3/scene = ExtResource("7_xqitv")
 
 [resource]
+physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Grass Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
